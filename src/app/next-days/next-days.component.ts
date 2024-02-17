@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, tap, takeUntil, last } from 'rxjs';
+import { Subject, tap, takeUntil } from 'rxjs';
 import { WeatherService } from '../weather.service';
 import { IWeatherForecast } from '../interfaces/IWeatherForecast';
 import { DateTime } from 'luxon';
@@ -40,8 +40,6 @@ export class NextDaysComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       ).subscribe();
     }
-
-    console.log('forecast', this.forecast)
   }
 
   private forecastInLocalStorage(): boolean {

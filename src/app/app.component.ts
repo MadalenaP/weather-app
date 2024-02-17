@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,4 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'weather-app';
-
-  ngOnInit(): void {
-  }
 }
