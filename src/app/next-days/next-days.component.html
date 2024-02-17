@@ -1,2 +1,14 @@
-<p>next-days works!</p>
-<app-loading-indicator></app-loading-indicator>
+<section>
+  <div *ngIf="forecast; else loading">
+    <h1>Next 4 days in {{forecast.city.name}} - {{forecast.city.country}}</h1>
+    <ul class="days-list">
+      <li *ngFor="let day of forecast.list" class="days-list__item">
+          <div class="date">{{day.dt_txt | date : 'dd/MM'}}</div>
+          <div class="temperature"><b>{{day.main.temp}}°</b></div>
+          <img [src]="'https://openweathermap.org/img/wn/' + day.weather[0].icon + '.png'">
+        <p>{{day.main.temp_min}}° - {{day.main.temp_max}}°</p>
+      </li>
+    </ul>
+  </div>
+  <ng-template #loading><app-loading-indicator></app-loading-indicator></ng-template>
+</section>

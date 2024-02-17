@@ -1,11 +1,12 @@
-import { IWeatherResponse } from './IWeatherResponse'
+import { IWeatherForecastItem } from "./IWeatherForecastItem"
+
 
 export interface IWeatherForecast       
 {
   'cod': string,
   'message': number,
   'cnt': number,
-  'list': IWeatherResponse[],
+  'list': IWeatherForecastItem[],
   'city': {
     'id': number,
     'name': string,

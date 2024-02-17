@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { IWeatherResponse } from '../interfaces/IWeatherResponse';
 import { Subject, takeUntil, tap } from 'rxjs';
+import { ISingleDayWeatherResponse } from '../interfaces/ISingleDayWeatherResponse';
 
 @Component({
   selector: 'app-today',
@@ -10,7 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 })
 export class TodayComponent implements OnInit, OnDestroy {
   private destroy$: Subject<boolean> = new Subject<boolean>();
-  public weather: IWeatherResponse;
+  public weather: ISingleDayWeatherResponse;
 
   constructor(private weatherService: WeatherService) {
   }

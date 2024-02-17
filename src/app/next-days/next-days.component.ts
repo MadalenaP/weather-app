@@ -3,7 +3,7 @@ import { Subject, tap, takeUntil, last } from 'rxjs';
 import { WeatherService } from '../weather.service';
 import { IWeatherForecast } from '../interfaces/IWeatherForecast';
 import { DateTime } from 'luxon';
-import { IWeatherResponse } from '../interfaces/IWeatherResponse';
+import { IWeatherForecastItem } from '../interfaces/IWeatherForecastItem';
 
 @Component({
   selector: 'app-next-days',
@@ -39,6 +39,8 @@ export class NextDaysComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       ).subscribe();
     }
+
+    console.log('forecast', this.forecast)
   }
 
   private forecastInLocalStorage(): boolean {
@@ -51,7 +53,7 @@ export class NextDaysComponent implements OnInit, OnDestroy {
   }
 
   private filterForecastData(forecast: IWeatherForecast): IWeatherForecast {
-    const newForecastDays: IWeatherResponse[] = forecast.list.filter(s => s.dt_txt && (new Date(s.dt_txt).getHours() === 0));
+    const newForecastDays: IWeatherForecastItem[] = forecast.list.filter(s => s.dt_txt && (new Date(s.dt_txt).getHours() === 0));
     forecast.list = newForecastDays.slice(0, 4);
     return forecast;
   }

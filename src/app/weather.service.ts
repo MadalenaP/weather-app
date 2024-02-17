@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap, tap } from 'rxjs';
-import { IWeatherResponse } from './interfaces/IWeatherResponse';
 import { IWeatherForecast } from './interfaces/IWeatherForecast';
+import { ISingleDayWeatherResponse } from './interfaces/ISingleDayWeatherResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class WeatherService {
     private http: HttpClient) { }
 
 
-  public getTodaysWeather(): Observable<IWeatherResponse> {
+  public getTodaysWeather(): Observable<ISingleDayWeatherResponse> {
     if (this.userLocation) {
       return this.getCurrentWeather();
     } else {
@@ -40,8 +40,8 @@ export class WeatherService {
     }
   }
 
-  private getCurrentWeather(): Observable<IWeatherResponse> {
-    return this.http.get<IWeatherResponse>(`${this.baseUrl}/weather?lat=${this.userLocation.coords.latitude}&lon=${this.userLocation.coords.longitude}&appid=${this.apiKey}&units=metric`);
+  private getCurrentWeather(): Observable<ISingleDayWeatherResponse> {
+    return this.http.get<ISingleDayWeatherResponse>(`${this.baseUrl}/weather?lat=${this.userLocation.coords.latitude}&lon=${this.userLocation.coords.longitude}&appid=${this.apiKey}&units=metric`);
   }
 
   private get5DaysWeather(): Observable<IWeatherForecast> {

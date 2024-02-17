@@ -1,4 +1,4 @@
-export interface IWeatherResponse                           
+export interface ISingleDayWeatherResponse                           
 {
   'coord': {
     'lon': number,
