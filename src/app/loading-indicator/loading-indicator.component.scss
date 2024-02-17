@@ -1,0 +1,40 @@
+.loading-indicator {
+  width: 100%;
+
+  p {
+    text-align: center;
+  }
+}
+
+.animation {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  margin: auto;
+
+  span {
+    font-size: 150px;
+  }
+
+  .sun {
+    position: absolute;
+    top: -30px;
+    left: 60px;
+    animation: spin 10s infinite linear;
+  }
+
+  .cloud {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    z-index: 1;
+    position: absolute;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
