@@ -53,8 +53,7 @@ export class NextDaysComponent implements OnInit, OnDestroy {
 
   private filterForecastData(forecast: IWeatherForecast): IWeatherForecast {
     const newForecastDays: IWeatherForecastItem[] = forecast.list.filter(s => s.dt_txt && (new Date(s.dt_txt).getHours() === 0));
-    forecast.list = newForecastDays.slice(0, 4);
-    return forecast;
+    return {...forecast, list: newForecastDays.slice(0, 4)};
   }
 
   public daySelected(day: IWeatherForecastItem): void {
