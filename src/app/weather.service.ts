@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap, tap } from 'rxjs';
 import { IWeatherForecast } from './interfaces/IWeatherForecast';
 import { ISingleDayWeatherResponse } from './interfaces/ISingleDayWeatherResponse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class WeatherService {
   public userLocation: GeolocationPosition;
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private router: Router) { }
 
 
   public getTodaysWeather(): Observable<ISingleDayWeatherResponse> {
@@ -55,7 +57,11 @@ export class WeatherService {
         observer.next(position);
         observer.complete();
       },
-        error => observer.error(error));
+        error => {
+          observer.error(error)
+          this.router.navigate(['/error']);
+        }
+        );
     });
 }
 }

@@ -27,7 +27,6 @@ export class TodayComponent implements OnInit, OnDestroy {
   private getCurrentWeather(): void {
     this.weatherService.getTodaysWeather().pipe(
       tap((weather) => this.weather = weather),
-      tap((res) => console.log(res)),
       takeUntil(this.destroy$)
     ).subscribe();
   }

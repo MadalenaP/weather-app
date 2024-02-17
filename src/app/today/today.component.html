@@ -1,14 +1,28 @@
-<div *ngIf="weather; else loading">
-  <h1>Weather in {{weather.name}} - {{weather.sys.country}}</h1>
-  
-  <p>feels like: {{weather.main.feels_like}}</p>
-  <p>humidity: {{weather.main.humidity}}</p>
-  <p>temperature: {{weather.main.temp}}</p>
-  <p>temperature min: {{weather.main.temp_min}}</p>
-  <p>temperature max: {{weather.main.temp_max}}</p>
-  <p>wind: {{weather.wind.speed}}</p>
-  <img [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'">
-  <!-- weather.weather.main 'clouds', 'clear', 'athmoshpere', 'snow', 'rain', 'drizzle', 'thunderstorm' -->
-</div>
+<section>
+  <a [routerLink]="'/four-days'">See next 4 days' forecast</a>
+  <div *ngIf="weather; else loading" class="weather-container">
+    <h1>Weather in {{weather.name}} - {{weather.sys.country}}</h1>
+    <div class="temperature"><b>{{weather.main.temp}}°</b></div>
+    <img [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'">
+    <div class="secondary-text">Feels like {{weather.main.feels_like}}°</div>
+    <div class="details">
+      <div class="details__item" matTooltip="Humidity">
+        <span class="material-symbols-outlined"
+        aria-label="Humidity">humidity_percentage</span>
+        <span>{{weather.main.humidity}}</span>
+      </div>
+      <div class="details__item" matTooltip="Wind">
+        <span class="material-symbols-outlined"
+        aria-label="Wind"> air</span>
+        <span>{{weather.wind.speed}}</span>
+      </div>
+      <div class="details__item" matTooltip="Min and Max temperature">
+        <span class="material-symbols-outlined"
+        aria-label="Min and Max temperature">thermometer </span>
+        <span>{{weather.main.temp_min}}° - {{weather.main.temp_max}}°</span>
+      </div>
+    </div>
+  </div>
 
-<ng-template #loading>loading</ng-template>
+  <ng-template #loading><app-loading-indicator></app-loading-indicator></ng-template>
+</section>

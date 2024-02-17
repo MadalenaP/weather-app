@@ -1,0 +1,43 @@
+a {
+  display: block;
+  margin-top: 50px;
+  width: fit-content;
+}
+
+.weather-container {
+  text-align: center;
+
+  .temperature {
+    font-size: 40px;
+  }
+
+  img {
+    height: 60px;
+  }
+
+  .secondary-text {
+    color: grey;
+  }
+
+  .details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .details__item {
+    display: flex;
+    font-size: 24px;
+
+    >* {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .material-symbols-outlined {
+      font-size: 30px;
+    }
+  }
+}

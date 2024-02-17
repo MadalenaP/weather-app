@@ -1,7 +1,9 @@
-h1 {
-  font-size: 60px;
-  text-align: center;
+a {
+  display: block;
+  margin-top: 50px;
+  width: fit-content;
 }
+
 .days-list {
   list-style: none;
   padding: 0;
@@ -15,6 +17,8 @@ h1 {
   width: auto;
   flex: 1;
   padding: 30px;
+  cursor: pointer;
+
   >* {
     margin: auto;
     text-align: center;
@@ -27,8 +31,41 @@ h1 {
   .date{
     font-size: 34px;
   }
-  
+
   .temperature {
+    font-size: 30px;
+  }
+
+  &:hover,
+  &:focus,
+  &.active {
+    box-shadow: none;
+  }
+}
+
+h2 {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.details__item {
+  display: flex;
+  font-size: 24px;
+
+  >* {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .material-symbols-outlined {
     font-size: 30px;
   }
 }

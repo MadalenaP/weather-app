@@ -1,0 +1,20 @@
+.error-container {
+  width: fit-content;
+  margin: 100px auto;
+  display: flex;
+
+  >* {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .location {
+    font-size: 200px;
+  }
+
+  p {
+    font-size: 24px;
+  }
+
+}

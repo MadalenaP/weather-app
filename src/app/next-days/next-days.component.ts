@@ -12,7 +12,8 @@ import { IWeatherForecastItem } from '../interfaces/IWeatherForecastItem';
 })
 export class NextDaysComponent implements OnInit, OnDestroy {  
   private destroy$: Subject<boolean> = new Subject<boolean>();
-  public forecast: IWeatherForecast;
+  protected forecast: IWeatherForecast;
+  protected selectedDay: IWeatherForecastItem;
 
   constructor(private weatherService: WeatherService) {
   }
@@ -56,5 +57,9 @@ export class NextDaysComponent implements OnInit, OnDestroy {
     const newForecastDays: IWeatherForecastItem[] = forecast.list.filter(s => s.dt_txt && (new Date(s.dt_txt).getHours() === 0));
     forecast.list = newForecastDays.slice(0, 4);
     return forecast;
+  }
+
+  public daySelected(day: IWeatherForecastItem): void {
+    this.selectedDay = day;
   }
 }
